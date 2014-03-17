@@ -7,13 +7,13 @@ module.exports = function(grunt) {
         pkg: grunt.file.readJSON('package.json'),
 
         jshint: {
-            all: ['src/**/*.js']
+            all: ['core/**/*.js', 'app.js']
         },
 
         browserify: {
             dist: {
                 files: {
-                    'dist/app.js': ['src/app.js']
+                    'public/app.js': ['core/client.js']
                 },
                 options: {
                     debug: true
@@ -24,15 +24,30 @@ module.exports = function(grunt) {
         uglify: {
             all: {
                 files: {
-                    'dist/app.js': 'dist/app.js'
+                    'public/app.js': 'public/app.js'
+                }
+            }
+        },
+
+        express: {
+            dev: {
+                options: {
+                    script: 'app.js'
                 }
             }
         },
 
         watch: {
             js: {
-                files: ['src/**/*.js'],
+                files: ['core/**/*.js', 'app.js'],
                 tasks: ['jshint', 'browserify']
+            },
+            express: {
+                files: ['**/*.js'],
+                tasks: ['express:dev'],
+                options: {
+                    spawn: false
+                }
             },
             options: {
                 livereload: 35729
@@ -46,7 +61,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-browserify');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-express-server');
 
-    grunt.registerTask('default', ['jshint', 'browserify', 'uglify', 'watch']);
+    grunt.registerTask('default', ['jshint', 'browserify', 'uglify', 'express:dev', 'watch']);
 
 };

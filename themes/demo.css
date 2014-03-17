@@ -1,0 +1,57 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #ccc;
+    font-family: sans-serif;
+    color: rgb(50, 50, 50);
+}
+
+.presentation {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+article {
+    width: 70%;
+    height: 98%;
+    background-color: rgb(250, 250, 250);
+    -moz-box-shadow: 0 0 5px #888;
+    -webkit-box-shadow: 0 0 5px#888;
+    box-shadow: 0 0 5px #888;
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 1%;
+    margin-left: -35%;
+}
+
+article h1 {
+    margin: 1em;
+}
+
+.current {
+    display: block;
+}
+
+.prev {
+    display: block;
+    -webkit-transform: translateX(-100%) scale(0.9);
+}
+
+.prev-prev {
+    display: block;
+    -webkit-transform: translateX(-150%) scale(0.9);
+}
+
+.next {
+    display: block;
+    -webkit-transform: translateX(100%) scale(0.9);
+}
+
+.next-next {
+    display: block;
+    -webkit-transform: translateX(150%) scale(0.9);
+}
