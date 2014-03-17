@@ -4,11 +4,10 @@
  */
 
 var express = require('express');
-var routes = require('./routes');
-var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
-var presentation = require('./core/presentation');
+var presentations = require('./core/presentations');
+var speakerview = require('./core/speakerview');
 
 var app = express();
 
@@ -29,8 +28,13 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-app.get('/', routes.index);
-app.get('/presentation/:name', presentation.index);
+// routes
+app.get('/', function(req, res){
+    res.render('index');
+});
+app.get('/presentations', presentations.index);
+app.get('/presentations/:name', presentations.show);
+app.get('/speakerview/:name', speakerview.show);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

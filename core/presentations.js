@@ -1,4 +1,6 @@
-exports.index = function(req, res) {
+var fs = require('fs');
+
+exports.show = function(req, res) {
     var currentPresentation,
         presentation = require('./models/presentation');
 
@@ -8,4 +10,9 @@ exports.index = function(req, res) {
         slides: currentPresentation.getSlides(),
         theme: currentPresentation.getThemeName()
     });
+};
+
+exports.index = function(req, res) {
+    var presentations = fs.readdirSync('presentations');
+    res.render('presentations-list', {presentations: presentations});
 };

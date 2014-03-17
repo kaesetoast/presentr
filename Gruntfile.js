@@ -44,7 +44,8 @@ module.exports = function(grunt) {
                     sourcemap: true
                 },
                 files: {
-                    'public/presentr.css': 'core/styles/main.scss'
+                    'public/presentr.css': 'core/styles/presentation.scss',
+                    'public/app.css': 'core/styles/main.scss'
                 }
             }
         },
