@@ -4,5 +4,8 @@ exports.index = function(req, res) {
 
     currentPresentation = new presentation(req.params.name);
 
-    res.render('presentation', {slides: currentPresentation.getSlides()});
+    res.render('presentation', {
+        slides: currentPresentation.getSlides(),
+        theme: currentPresentation.getThemeName()
+    });
 };

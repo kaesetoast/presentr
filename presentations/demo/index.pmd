@@ -1,3 +1,4 @@
+<!-- Theme: demo -->
 Dillinger
 =========
 
@@ -36,3 +37,16 @@ Dillinger uses a number of open source projects to work properly:
 * [Express] - fast node.js network app framework [@tjholowaychuk]
 * [keymaster.js] - awesome keyboard handler lib by [@thomasfuchs]
 * [jQuery] - duh 
+
+Another great slide
+===================
+
+Once again, you are viewing a slide written in markdown
+
+* Cool stuff
+* so far
+
+It always gets better
+=====================
+
+We can improve this constantly

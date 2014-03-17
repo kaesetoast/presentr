@@ -1,5 +1,11 @@
-extends layout
-
-block content
-  each slide in slides
-    article.slide!= slide
+doctype html
+html
+    head
+        title= title
+        link(rel='stylesheet', href='/presentr.css')
+        link(rel='stylesheet', href='/themes/' + theme + '.css')
+    body
+        #slide-container
+            each slide in slides
+                article.slide!= slide
+        script(src='/app.js')
