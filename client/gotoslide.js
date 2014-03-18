@@ -24,6 +24,7 @@ module.exports = function(presentation) {
     exports.open = function(event) {
         event.currentTarget.parentNode.insertBefore(searchWrapper, event.currentTarget.nextSibling);
         searchWrapper.addEventListener('keyup', fire);
+        searchInput.value = presentation.getCurrentSlideIndex() + 1;
         isOpen = true;
     };
 

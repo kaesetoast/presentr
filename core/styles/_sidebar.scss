@@ -16,15 +16,19 @@ $linkcolorlow: rgba(255, 255, 255, .6);
     font-size: 16px;
     h1 {
         font-size: 2em;
-        text-align: center;
-        color: $linkcolorlow;
-        margin: 0;
-        padding: 0.3em 0;
-        font-weight: 100;
-        font-family: 'Raleway';
-        border-bottom: 1px solid rgba(255, 255, 255, .6);
-        &:hover {
-            color: $linkcolor;
+        a {
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            color: $linkcolorlow;
+            margin: 0;
+            padding: 0.3em 0;
+            font-weight: 100;
+            font-family: 'Raleway';
+            border-bottom: 1px solid rgba(255, 255, 255, .6);
+            &:hover {
+                color: $linkcolor;
+            }
         }
     }
     ul {

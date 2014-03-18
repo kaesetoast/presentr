@@ -36,8 +36,11 @@ module.exports = function(presentation) {
         sidebar.classList.add('sidebar');
         document.body.appendChild(sidebar);
         var label = document.createElement('h1');
+        var anchor = document.createElement('a');
+        anchor.href = '/';
+        label.appendChild(anchor);
         label.classList.add('label', 'icon-presentr');
-        label.innerHTML = 'presentr';
+        anchor.innerHTML = 'presentr';
         sidebar.appendChild(label);
     }
 

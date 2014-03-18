@@ -24,6 +24,10 @@ module.exports = function(slides, name, isPreviewDeck) {
         exports.goTo(getPrevSlideIndex(currentIndex));
     };
 
+    exports.getCurrentSlideIndex = function() {
+        return currentIndex;
+    };
+
     exports.goTo = function(slideIndex, remoteInvoked) {
         if (slides.length > slideIndex) {
             if (!remoteInvoked) {
