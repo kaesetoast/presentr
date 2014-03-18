@@ -18,6 +18,19 @@
     left: 0;
     right: 0;
     bottom: 0;
+    &.end {
+        background-color: black;
+        &:after {
+            content: 'End of Presentation';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: white;
+            font-size: 3em;
+            padding: 0.5em 0.7em;
+        }
+    }
 }
 
 .current {

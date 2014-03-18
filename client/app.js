@@ -1,7 +1,8 @@
 var presentationModule = require('./presentation'),
-    viewportObserver = require('./viewport-observer');
+    viewportObserver = require('./viewport-observer'),
+    isPreviewDeck = window.location.hash === '#preview';
 
-window.presentation = new presentationModule(document.getElementsByClassName('slide'), document.body.getAttribute('data-presentation'));
+window.presentation = new presentationModule(document.getElementsByClassName('slide'), document.body.getAttribute('data-presentation'), isPreviewDeck);
 
 document.addEventListener('keydown', function(e) {
     'use strict';

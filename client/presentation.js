@@ -1,10 +1,13 @@
-module.exports = function(slides, name) {
+module.exports = function(slides, name, isPreviewDeck) {
     'use strict';
     var exports = {},
         currentIndex = 0,
         socket;
 
     function init() {
+        if (isPreviewDeck) {
+            addEndSlide();
+        }
         setSlides();
         socket = io.connect('http://localhost');
         socket.on('goto-slide', function(data){
@@ -31,21 +34,28 @@ module.exports = function(slides, name) {
         }
     };
 
+    function addEndSlide() {
+        var article = document.createElement('article');
+        article.classList.add('slide', 'end');
+        slides[slides.length-1].parentNode.insertBefore(article, slides[slides.length-1].nextSibling);
+    }
+
     function setSlides() {
+        var currentIndexLocal = isPreviewDeck ? (currentIndex + 1) : currentIndex;
         for (var i = slides.length - 1; i >= 0; i--) {
             slides[i].classList.remove('current', 'next', 'prev', 'next-next', 'prev-prev');
         }
-        slides[currentIndex].classList.add('current');
-        var nextIndex = getNextSlideIndex(currentIndex),
-            prevIndex = getPrevSlideIndex(currentIndex);
-        if (nextIndex !== currentIndex) {
+        slides[currentIndexLocal].classList.add('current');
+        var nextIndex = getNextSlideIndex(currentIndexLocal),
+            prevIndex = getPrevSlideIndex(currentIndexLocal);
+        if (nextIndex !== currentIndexLocal) {
             slides[nextIndex].classList.add('next');
             var nextNextIndex = getNextSlideIndex(nextIndex);
             if (nextNextIndex !== nextIndex) {
                 slides[nextNextIndex].classList.add('next-next');
             }
         }
-        if (prevIndex !== currentIndex) {
+        if (prevIndex !== currentIndexLocal) {
             slides[prevIndex].classList.add('prev');
             var prevPrevIndex = getPrevSlideIndex(prevIndex);
             if (prevPrevIndex !== prevIndex) {
