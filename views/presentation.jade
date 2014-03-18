@@ -4,8 +4,9 @@ html
         title= title
         link(rel='stylesheet', href='/presentr.css')
         link(rel='stylesheet', href='/themes/' + theme + '.css')
-    body
+    body(data-presentation= name)
         #slide-container
             each slide in slides
                 article.slide!= slide
+        script(src='/socket.io/socket.io.js')
         script(src='/app.js')

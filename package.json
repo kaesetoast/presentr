@@ -26,6 +26,7 @@
   "dependencies": {
     "express": "3.4.8",
     "jade": "*",
-    "marked": "~0.3.2"
+    "marked": "~0.3.2",
+    "socket.io": "~0.9.16"
   }
 }

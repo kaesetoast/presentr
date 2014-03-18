@@ -8,7 +8,8 @@ exports.show = function(req, res) {
 
     res.render('presentation', {
         slides: currentPresentation.getSlides(),
-        theme: currentPresentation.getThemeName()
+        theme: currentPresentation.getThemeName(),
+        name: req.params.name
     });
 };
 

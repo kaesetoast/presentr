@@ -1,7 +1,7 @@
 var presentationModule = require('./presentation'),
     viewportObserver = require('./viewport-observer');
 
-window.presentation = new presentationModule(document.getElementsByClassName('slide'));
+window.presentation = new presentationModule(document.getElementsByClassName('slide'), document.body.getAttribute('data-presentation'));
 
 document.addEventListener('keydown', function(e) {
     'use strict';

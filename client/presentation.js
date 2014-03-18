@@ -1,10 +1,16 @@
-module.exports = function(slides) {
+module.exports = function(slides, name) {
     'use strict';
     var exports = {},
-        currentIndex = 0;
+        currentIndex = 0,
+        socket;
 
     function init() {
         setSlides();
+        socket = io.connect('http://localhost');
+        socket.on('goto-slide', function(data){
+            exports.goTo(data, true);
+        });
+        socket.emit('register', {presentation: name});
     }
 
     exports.next = function() {
@@ -15,8 +21,11 @@ module.exports = function(slides) {
         exports.goTo(getPrevSlideIndex(currentIndex));
     };
 
-    exports.goTo = function(slideIndex) {
+    exports.goTo = function(slideIndex, remoteInvoked) {
         if (slides.length > slideIndex) {
+            if (!remoteInvoked) {
+                socket.emit('goto-slide', {presentationName: name, slide: slideIndex});
+            }
             currentIndex = slideIndex;
             setSlides();
         }
