@@ -46,4 +46,30 @@ $linkcolorlow: rgba(255, 255, 255, .6);
             }
         }
     }
+    .gotoslide {
+        position: relative;
+        &:after {
+            content: '';
+            position: absolute;
+            top: -0.5em;
+            left: 2em;
+            border-style: solid;
+            border-width: 0 0.6em 0.6em;
+            border-color: #fff transparent;
+            display: block;
+            width: 0;
+            z-index: 1;
+        }
+        input {
+            display: block;
+            width: 190px;
+            height: 1.8em;
+            padding: 0 5px;
+            margin: .4em auto .5em;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+            font-size: 1.1em;
+        }
+    }
 }

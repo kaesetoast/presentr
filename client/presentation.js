@@ -34,6 +34,14 @@ module.exports = function(slides, name, isPreviewDeck) {
         }
     };
 
+    exports.getSlides = function() {
+        return slides;
+    };
+
+    exports.getName = function() {
+        return name;
+    };
+
     function addEndSlide() {
         var article = document.createElement('article');
         article.classList.add('slide', 'end');

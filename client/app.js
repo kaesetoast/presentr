@@ -5,7 +5,7 @@ var presentationModule = require('./presentation'),
     isPreviewDeck = window.location.hash === '#preview';
 
 window.presentation = new presentationModule(document.getElementsByClassName('slide'), presentationName, isPreviewDeck);
-new sidebar(presentationName);
+new sidebar(window.presentation);
 
 document.addEventListener('keydown', function(e) {
     'use strict';

@@ -1,14 +1,21 @@
-module.exports = function(presentationName) {
+module.exports = function(presentation) {
     'use strict';
     var exports = {},
         sidebar,
         elementsList,
+        gotoslide = require('./gotoslide'),
         elements = [
             {
                 label: 'Speakerview',
-                action: '/speakerview/' + presentationName,
+                action: '/speakerview/' + presentation.getName(),
                 target: '_blank',
                 class: 'icon-screen'
+            },
+            {
+                label: 'Go to slide',
+                // This needs to become more generic
+                action: new gotoslide(presentation),
+                class: 'icon-search'
             },
             {
                 label: 'Browse Presentations',
@@ -29,7 +36,7 @@ module.exports = function(presentationName) {
         sidebar.classList.add('sidebar');
         document.body.appendChild(sidebar);
         var label = document.createElement('h1');
-        label.classList.add('label');
+        label.classList.add('label', 'icon-presentr');
         label.innerHTML = 'presentr';
         sidebar.appendChild(label);
     }
@@ -47,6 +54,9 @@ module.exports = function(presentationName) {
                 if (typeof elements[i].target !== 'undefined') {
                     anchor.target = elements[i].target;
                 }
+            } else {
+                anchor.href = '';
+                anchor.addEventListener('click', elements[i].action.toggle);
             }
             if (typeof elements[i].class !== 'undefined') {
                 anchor.classList.add(elements[i].class);
