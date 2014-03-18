@@ -13,10 +13,17 @@ module.exports = function(grunt) {
         browserify: {
             dist: {
                 files: {
-                    'public/app.js': ['client/app.js']
+                    'public/app.js': ['client/app.js'],
+                    'public/speakerview.js': ['client/speakerview.js']
                 },
                 options: {
-                    debug: true
+                    debug: true,
+                    shim: {
+                        draggable: {
+                            path: './components/draggable/draggable.js',
+                            exports: 'draggable'
+                        }
+                    }
                 }
             }
         },
@@ -24,7 +31,8 @@ module.exports = function(grunt) {
         uglify: {
             all: {
                 files: {
-                    'public/app.js': 'public/app.js'
+                    'public/app.js': 'public/app.js',
+                    'public/speakerview.js': 'public/speakerview.js'
                 }
             }
         },
@@ -45,6 +53,7 @@ module.exports = function(grunt) {
                 },
                 files: {
                     'public/presentr.css': 'core/styles/presentation.scss',
+                    'public/speakerview.css': 'core/styles/speakerview.scss',
                     'public/app.css': 'core/styles/main.scss'
                 }
             }

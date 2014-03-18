@@ -1,0 +1,21 @@
+{
+  "name": "presentr",
+  "version": "0.0.1",
+  "authors": [
+    "Philipp Nowinski <philipp@nowinski.de>"
+  ],
+  "description": "Another HTML5 presentation tool",
+  "main": "app.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "draggable": "~1.0.0"
+  }
+}

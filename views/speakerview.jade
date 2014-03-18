@@ -3,7 +3,12 @@ html
     head
         title= title
         link(rel='stylesheet', href='/presentr.css')
+        link(rel='stylesheet', href='/speakerview.css')
     body
-        iframe(width='800', height='600',frameborder='none',src='/presentations/' + presentation, id='current-view')
-        iframe(width='640', height='480',frameborder='none',src='/presentations/' + presentation, id='next-view')
+        .slide-decks
+            #current-view.view
+                iframe(width='800', height='600',frameborder='none',src='/presentations/' + presentation)
+            #next-view.view
+                iframe(width='640', height='480',frameborder='none',src='/presentations/' + presentation)
         script(src='/socket.io/socket.io.js')
+        script(src='/speakerview.js')
