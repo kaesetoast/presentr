@@ -1,8 +1,8 @@
 #slide-container {
+    margin: auto;
+    max-height: 100%;
     position: relative;
     width: 100%;
-    max-height: 100%;
-    margin: auto;
     &:before {
         content: '';
         display: block;
@@ -11,24 +11,24 @@
 }
 
 .slide {
-    display: none;
-    transition: transform 0.3s ease;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
     bottom: 0;
+    display: none;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: transform .3s ease;
     &.end {
-        background-color: black;
+        background-color: #000;
         &:after {
+            color: #fff;
             content: 'End of Presentation';
             display: block;
+            font-size: 3em;
+            left: 0;
+            padding: .5em .7em;
             position: absolute;
             top: 0;
-            left: 0;
-            color: white;
-            font-size: 3em;
-            padding: 0.5em 0.7em;
         }
     }
 }
@@ -39,20 +39,20 @@
 
 .prev {
     display: block;
-    transform: translateX(-100%) scale(0.9);
+    transform: translateX(-100%) scale(.9);
 }
 
 .prev-prev {
     display: block;
-    transform: translateX(-150%) scale(0.9);
+    transform: translateX(-150%) scale(.9);
 }
 
 .next {
     display: block;
-    transform: translateX(100%) scale(0.9);
+    transform: translateX(100%) scale(.9);
 }
 
 .next-next {
     display: block;
-    transform: translateX(150%) scale(0.9);
+    transform: translateX(150%) scale(.9);
 }

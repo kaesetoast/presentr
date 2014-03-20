@@ -1,31 +1,31 @@
-@import "icons";
+@import 'icons';
 $linkcolor: #fff;
 $linkcolorlow: rgba(255, 255, 255, .6);
 .sidebar {
-    position: absolute;
-    top: 0;
-    left: -230px - 9px;
-    &.open {
-        left: 0;
-    }
-    transition: left 0.2s ease;
-    width: 230px;
-    height: 100%;
     background-color: #181818;
     box-shadow: 4px 0 9px rgba(0, 0, 0, .4);
     font-size: 16px;
+    height: 100%;
+    left: -230px - 9px;
+    position: absolute;
+    top: 0;
+    transition: left .2s ease;
+    width: 230px;
+    &.open {
+        left: 0;
+    }
     h1 {
         font-size: 2em;
         a {
+            border-bottom: 1px solid rgba(255, 255, 255, .6);
+            color: $linkcolorlow;
+            display: block;
+            font-family: 'Raleway';
+            font-weight: 100;
+            margin: 0;
+            padding: .3em 0;
             text-align: center;
             text-decoration: none;
-            display: block;
-            color: $linkcolorlow;
-            margin: 0;
-            padding: 0.3em 0;
-            font-weight: 100;
-            font-family: 'Raleway';
-            border-bottom: 1px solid rgba(255, 255, 255, .6);
             &:hover {
                 color: $linkcolor;
             }
@@ -38,42 +38,42 @@ $linkcolorlow: rgba(255, 255, 255, .6);
         li {
             margin: 0;
             padding: 0;
-            a {
-                font-size: 1em;
-                color: $linkcolor;
-                text-decoration: none;
-                display: block;
-                padding: 0.5em 0.7em;
-                &:hover {
-                    color: $linkcolorlow;
-                }
+        }
+        a {
+            color: $linkcolor;
+            display: block;
+            font-size: 1em;
+            padding: .5em .7em;
+            text-decoration: none;
+            &:hover {
+                color: $linkcolorlow;
             }
         }
     }
     .gotoslide {
         position: relative;
         &:after {
-            content: '';
-            position: absolute;
-            top: -0.5em;
-            left: 2em;
-            border-style: solid;
-            border-width: 0 0.6em 0.6em;
             border-color: #fff transparent;
+            border-style: solid;
+            border-width: 0 .6em .6em;
+            content: '';
             display: block;
+            left: 2em;
+            position: absolute;
+            top: -.5em;
             width: 0;
             z-index: 1;
         }
         input {
-            display: block;
-            width: 190px;
-            height: 1.8em;
-            padding: 0 5px;
-            margin: .4em auto .5em;
             border-radius: 5px;
-            border: none;
-            outline: none;
+            border: 0;
+            display: block;
             font-size: 1.1em;
+            height: 1.8em;
+            margin: .4em auto .5em;
+            outline: none;
+            padding: 0 5px;
+            width: 190px;
         }
     }
 }

@@ -1,14 +1,14 @@
 .slide-decks {
-    width: 100%;
     text-align: center;
+    width: 100%;
     .view {
         cursor: move;
         resize: both;
         iframe {
-            pointer-events: none;
             box-shadow: 0 0 6px rgba(0, 0, 0, .5);
             margin: 4px;
             overflow: auto;
+            pointer-events: none;
         }
     }
 }
