@@ -11,7 +11,12 @@ module.exports = function(slideElements, name, isPreviewDeck) {
         if (isPreviewDeck) {
             addEndSlide();
         }
-        setSlides();
+        if (window.location.hash !== '') {
+            hashChanged();
+        } else {
+            exports.goTo(0);
+        }
+        window.addEventListener('hashchange', hashChanged);
     }
 
     exports.next = function() {
@@ -32,6 +37,7 @@ module.exports = function(slideElements, name, isPreviewDeck) {
                 socket.emit('goto-slide', {presentationName: name, slide: slideIndex});
             }
             currentIndex = slideIndex;
+            window.location.hash = currentIndex + 1;
             setSlides();
         }
     };
@@ -68,6 +74,10 @@ module.exports = function(slideElements, name, isPreviewDeck) {
         for (var i = 0; i < slideElements.length; i++) {
             slides.push(new Slide(slideElements[i]));
         }
+    }
+
+    function hashChanged() {
+        exports.goTo(parseInt(window.location.hash.substring(1)) - 1);
     }
 
     function addEndSlide() {
