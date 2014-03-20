@@ -2,7 +2,7 @@ var presentationModule = require('./presentation'),
     viewportObserver = require('./viewport-observer'),
     sidebar = require('./sidebar'),
     presentationName = document.body.getAttribute('data-presentation'),
-    isPreviewDeck = window.location.hash === '#preview';
+    isPreviewDeck = window.location.href.indexOf('/preview', window.location.href.length - 8) > 0;
 
 window.presentation = new presentationModule(document.getElementsByClassName('slide'), presentationName, isPreviewDeck);
 new sidebar(window.presentation);

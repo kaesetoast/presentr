@@ -40,6 +40,7 @@ app.get('/', function(req, res){
 });
 app.get('/presentations', presentations.index);
 app.get('/presentations/:name', presentations.show);
+app.get('/presentations/:name/preview', presentations.show);
 app.get('/speakerview/:name', speakerview.show);
 
 http.createServer(app).listen(app.get('port'), function(){
