@@ -56,6 +56,7 @@ io.sockets.on('connection', function(socket){
             presentationSockets[data.presentation] = [];
         }
         presentationSockets[data.presentation].push(socket);
+        console.log('registered ' + data.presentation);
     });
     socket.on('goto-slide', function(data){
         var sockets = presentationSockets[data.presentationName];

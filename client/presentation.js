@@ -1,19 +1,17 @@
-module.exports = function(slides, name, isPreviewDeck) {
+module.exports = function(slideElements, name, isPreviewDeck) {
     'use strict';
     var exports = {},
         currentIndex = 0,
-        socket;
+        socket,
+        Slide = require('./slide'),
+        slides = [];
 
     function init() {
+        initSlides();
         if (isPreviewDeck) {
             addEndSlide();
         }
         setSlides();
-        socket = io.connect('http://localhost');
-        socket.on('goto-slide', function(data){
-            exports.goTo(data, true);
-        });
-        socket.emit('register', {presentation: name});
     }
 
     exports.next = function() {
@@ -30,7 +28,7 @@ module.exports = function(slides, name, isPreviewDeck) {
 
     exports.goTo = function(slideIndex, remoteInvoked) {
         if (slides.length > slideIndex) {
-            if (!remoteInvoked) {
+            if (!remoteInvoked && typeof socket !== 'undefined') {
                 socket.emit('goto-slide', {presentationName: name, slide: slideIndex});
             }
             currentIndex = slideIndex;
@@ -46,32 +44,58 @@ module.exports = function(slides, name, isPreviewDeck) {
         return name;
     };
 
+    exports.isConnected = function() {
+        return typeof socket !== 'undefined' && socket.socket.connected;
+    };
+
+    exports.connect = function() {
+        if (typeof socket === 'undefined') {
+            socket = io.connect('http://localhost');
+            socket.on('goto-slide', function(data){
+                exports.goTo(data, true);
+            });
+        } else {
+            socket.socket.connect();
+        }
+        socket.emit('register', {presentation: name});
+    };
+
+    exports.disconnect = function() {
+        socket.disconnect();
+    };
+
+    function initSlides() {
+        for (var i = 0; i < slideElements.length; i++) {
+            slides.push(new Slide(slideElements[i]));
+        }
+    }
+
     function addEndSlide() {
         var article = document.createElement('article');
         article.classList.add('slide', 'end');
-        slides[slides.length-1].parentNode.insertBefore(article, slides[slides.length-1].nextSibling);
+        slides[slides.length-1].getDomNode().parentNode.insertBefore(article, slides[slides.length-1].nextSibling);
     }
 
     function setSlides() {
         var currentIndexLocal = isPreviewDeck ? (currentIndex + 1) : currentIndex;
         for (var i = slides.length - 1; i >= 0; i--) {
-            slides[i].classList.remove('current', 'next', 'prev', 'next-next', 'prev-prev');
+            slides[i].clearStatus();
         }
-        slides[currentIndexLocal].classList.add('current');
+        slides[currentIndexLocal].setStatus('current');
         var nextIndex = getNextSlideIndex(currentIndexLocal),
             prevIndex = getPrevSlideIndex(currentIndexLocal);
         if (nextIndex !== currentIndexLocal) {
-            slides[nextIndex].classList.add('next');
+            slides[nextIndex].setStatus('next');
             var nextNextIndex = getNextSlideIndex(nextIndex);
             if (nextNextIndex !== nextIndex) {
-                slides[nextNextIndex].classList.add('next-next');
+                slides[nextNextIndex].setStatus('next-next');
             }
         }
         if (prevIndex !== currentIndexLocal) {
-            slides[prevIndex].classList.add('prev');
+            slides[prevIndex].setStatus('prev');
             var prevPrevIndex = getPrevSlideIndex(prevIndex);
             if (prevPrevIndex !== prevIndex) {
-                slides[prevPrevIndex].classList.add('prev-prev');
+                slides[prevPrevIndex].setStatus('prev-prev');
             }
         }
     }

@@ -3,7 +3,8 @@ module.exports = function(presentation) {
     var exports = {},
         sidebar,
         elementsList,
-        gotoslide = require('./gotoslide'),
+        Gotoslide = require('./gotoslide'),
+        PresentationConnector = require('./presentation-connector'),
         elements = [
             {
                 label: 'Speakerview',
@@ -14,8 +15,13 @@ module.exports = function(presentation) {
             {
                 label: 'Go to slide',
                 // This needs to become more generic
-                action: new gotoslide(presentation),
+                action: new Gotoslide(presentation).toggle,
                 class: 'icon-search'
+            },
+            {
+                label: 'Connect to session',
+                action: new PresentationConnector(presentation).toggle,
+                class: 'icon-disconnected'
             },
             {
                 label: 'Browse Presentations',
@@ -59,7 +65,7 @@ module.exports = function(presentation) {
                 }
             } else {
                 anchor.href = '';
-                anchor.addEventListener('click', elements[i].action.toggle);
+                anchor.addEventListener('click', elements[i].action);
             }
             if (typeof elements[i].class !== 'undefined') {
                 anchor.classList.add(elements[i].class);
