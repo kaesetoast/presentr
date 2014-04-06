@@ -7,8 +7,8 @@ html
     body
         .slide-decks
             #current-view.view
-                iframe(width='800', height='600',frameborder='none',src='/presentations/' + presentation)
+                iframe(width='800', height='600',frameborder='none',src='/presentations/' + presentation, name='current-view')
             #next-view.view
-                iframe(width='640', height='480',frameborder='none',src='/presentations/' + presentation + '/preview')
+                iframe(width='640', height='480',frameborder='none',src='/presentations/' + presentation + '/preview', name='next-view')
         script(src='/socket.io/socket.io.js')
         script(src='/speakerview.js')
