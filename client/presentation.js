@@ -84,6 +84,7 @@ module.exports = function(slideElements, name, isPreviewDeck) {
         var article = document.createElement('article');
         article.classList.add('slide', 'end');
         slides[slides.length-1].getDomNode().parentNode.insertBefore(article, slides[slides.length-1].nextSibling);
+        slides.push(new Slide(article));
     }
 
     function setSlides() {
