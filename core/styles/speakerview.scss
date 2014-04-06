@@ -1,8 +1,10 @@
 .slide-decks {
+    margin-top: 20px;
     text-align: center;
     width: 100%;
     .view {
         cursor: move;
+        left: 50%;
         resize: both;
         iframe {
             box-shadow: 0 0 6px rgba(0, 0, 0, .5);
@@ -11,4 +13,13 @@
             pointer-events: none;
         }
     }
+}
+
+#current-view {
+    margin-left: -600px;
+}
+
+#next-view {
+    margin-left: 50x;
+    margin-top: (600px - 480px) / 2;
 }
