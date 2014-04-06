@@ -11,7 +11,7 @@ var express = require('express'),
 
 var app = express();
 var server = app.listen(3000);
-var io = require('socket.io').listen(server);
+var socketServer = require('./core/socketserver');
 
 // all environments
 app.configure(function(){
@@ -49,24 +49,4 @@ http.createServer(app).listen(app.get('port'), function(){
 });
 
 // io-server
-var presentationSockets = {};
-io.sockets.on('connection', function(socket){
-    'use strict';
-    socket.on('register', function(data){
-        if (typeof presentationSockets[data.presentation] === 'undefined') {
-            presentationSockets[data.presentation] = [];
-        }
-        presentationSockets[data.presentation].push(socket);
-        console.log('registered ' + data.presentation);
-    });
-    socket.on('goto-slide', function(data){
-        var sockets = presentationSockets[data.presentationName];
-        if (typeof sockets !== 'undefined') {
-            for (var i = sockets.length - 1; i >= 0; i--) {
-                if (sockets[i] !== socket) {
-                    sockets[i].emit('goto-slide', data.slide);
-                }
-            }
-        }
-    });
-});
+socketServer.start(server);
