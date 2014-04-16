@@ -1,3 +1,6 @@
+@import "../../components/bourbon/app/assets/stylesheets/bourbon";
+@import "animations";
+
 .slide-decks {
     margin-top: 20px;
     text-align: center;
@@ -22,4 +25,28 @@
 #next-view {
     margin-left: 50x;
     margin-top: (600px - 480px) / 2;
+}
+
+.toolbox {
+    box-shadow: 0 0 6px rgba(0, 0, 0, .5);
+    width: 500px;
+    height: 300px;
+    background-color: #fff;
+    bottom: 20px;
+    right: 300px;
+    cursor: move;
+    font-size: 3em;
+    .time-box {
+        margin: .6em;
+        &.lastminute {
+            color: #f00;
+        }
+        &.overtime {
+            @include animation(blink .9s infinite);
+        }
+    }
+    .toggle-button {
+        margin: .6em;
+        cursor: pointer;
+    }
 }

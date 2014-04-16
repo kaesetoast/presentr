@@ -4,7 +4,8 @@ module.exports = function (fileName) {
         marked = require('marked'),
         fs = require('fs'),
         slides,
-        theme = 'default';
+        theme = 'default',
+        duration = 0;
 
     function init() {
         var file = fs.readFileSync('presentations/' + fileName + '/index.pmd');
@@ -13,8 +14,9 @@ module.exports = function (fileName) {
 
     function setContent(data) {
         slides = [];
-        var definedTheme = data.match(/<!-- Theme:(.+) -->/);
-        theme = definedTheme === null ? theme : definedTheme[1].trim();
+        theme = extractMetaData('Theme', data);
+        duration = extractMetaData('Duration', data);
+        duration = parseDuration(duration);
         data = data.replace(/<!--(.*)-->/, '');
         var contents = marked(data).split(/(<h1 id=\".*\">.*<\/h1>)/);
         if (contents[0] === '') {
@@ -25,12 +27,28 @@ module.exports = function (fileName) {
         }
     }
 
+    function extractMetaData(propertyName, data) {
+        var prop = data.match(new RegExp('<!-- ' + propertyName + ':(.+) -->'));
+        prop = prop === null ? prop : prop[1].trim();
+        return prop;
+    }
+
+    function parseDuration(duration) {
+        var durationParts = duration.split(':'),
+            seconds = (parseInt(durationParts[0]) * 3600) + (parseInt(durationParts[1]) * 60) + parseInt(durationParts[2]);
+        return seconds;
+    }
+
     exports.getSlides = function() {
         return slides;
     };
 
     exports.getThemeName = function() {
         return theme;
+    };
+
+    exports.getDuration = function() {
+        return duration;
     };
 
     init();

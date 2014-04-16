@@ -9,7 +9,8 @@ exports.show = function(req, res) {
     res.render('presentation', {
         slides: currentPresentation.getSlides(),
         theme: currentPresentation.getThemeName(),
-        name: req.params.name
+        name: req.params.name,
+        duration: currentPresentation.getDuration()
     });
 };
 

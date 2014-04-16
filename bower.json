@@ -17,5 +17,8 @@
   ],
   "dependencies": {
     "draggable": "~1.0.0"
+  },
+  "devDependencies": {
+    "bourbon": "~3.1.8"
   }
 }
