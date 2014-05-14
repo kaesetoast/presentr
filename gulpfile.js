@@ -44,8 +44,8 @@ gulp.task('watch', function(){
     gulp.watch('./client/**/*.js', ['js-frontend']);
     gulp.watch(['./core/**/*.js', 'app.js'], ['js-backend']);
     var server = livereload();
-    gulp.watch(['./public/**/*', './core/**/*.js']).on('change', function(file){
-        if (file.path.indexOf('/core/') > 0) {
+    gulp.watch(['./public/**/*', './core/**/*.js', 'views/**/*']).on('change', function(file){
+        if (file.path.indexOf('/core/') > 0 || file.path.indexOf('.jade') > 0) {
             setTimeout(function(){
                 server.changed(file.path);
             }, 300);
