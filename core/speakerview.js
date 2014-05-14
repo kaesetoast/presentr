@@ -8,6 +8,7 @@ exports.show = function(req, res) {
 
     res.render('speakerview', {
         presentation: req.params.name,
-        duration: currentPresentation.getDuration()
+        duration: currentPresentation.getDuration(),
+        title: 'Speakerview: ' + req.params.name + ' - presentr'
     });
 };

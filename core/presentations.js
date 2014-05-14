@@ -10,7 +10,8 @@ exports.show = function(req, res) {
         slides: currentPresentation.getSlides(),
         theme: currentPresentation.getThemeName(),
         name: req.params.name,
-        duration: currentPresentation.getDuration()
+        duration: currentPresentation.getDuration(),
+        title: req.params.name + ' - presentr'
     });
 };
 
