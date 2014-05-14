@@ -1,2 +1,9 @@
-body{font-family:'Raleway'}.hero{text-align:center}.hero h1{color:#1f8dd6;font-size:5em;font-weight:200}
-/*# sourceMappingURL=app.css.map */
+body {
+  font-family: 'Raleway'; }
+
+.hero {
+  text-align: center; }
+  .hero h1 {
+    color: #1f8dd6;
+    font-size: 5em;
+    font-weight: 200; }
