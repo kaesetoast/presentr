@@ -17,7 +17,7 @@ module.exports = function (fileName) {
         theme = extractMetaData('Theme', data);
         duration = extractMetaData('Duration', data);
         duration = parseDuration(duration);
-        data = data.replace(/<!--(.*)-->/, '');
+        data = data.replace(/<!--(.*)-->/g, '');
         var contents = marked(data).split(/(<h1 id=\".*\">.*<\/h1>)/);
         if (contents[0] === '') {
             contents.splice(0, 1);
