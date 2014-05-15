@@ -21,6 +21,7 @@
     "gulp-jshint": "^1.5.5",
     "gulp-livereload": "^1.5.0",
     "gulp-notify": "^1.2.5",
+    "gulp-open": "^0.2.8",
     "gulp-sass": "^0.7.1",
     "gulp-streamify": "0.0.5",
     "gulp-uglify": "^0.3.0",

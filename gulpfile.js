@@ -6,7 +6,8 @@ var gulp = require('gulp'),
     autoprefixer = require('gulp-autoprefixer'),
     notify = require('gulp-notify'),
     expressService = require('gulp-express-service'),
-    livereload = require('gulp-livereload');
+    livereload = require('gulp-livereload'),
+    open = require('gulp-open');
 
 gulp.task('js-frontend', function(){
     gulp.src('./client/**/*.js')
@@ -55,6 +56,13 @@ gulp.task('watch', function(){
     });
 });
 
+gulp.task('open', function(){
+    gulp.src('app.js')
+    .pipe(open('' , {
+        url: 'http://localhost:3000' 
+    }));
+});
+
 gulp.task('default', function(){
-    gulp.start('css', 'js-frontend', 'js-backend', 'watch');
+    gulp.start('css', 'js-frontend', 'js-backend', 'open',   'watch');
 });
