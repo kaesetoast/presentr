@@ -45,7 +45,7 @@ gulp.task('watch', function(){
     gulp.watch('./client/**/*.js', ['js-frontend']);
     gulp.watch(['./core/**/*.js', 'app.js'], ['js-backend']);
     var server = livereload();
-    gulp.watch(['./public/**/*', './core/**/*.js', 'views/**/*']).on('change', function(file){
+    gulp.watch(['./public/**/*', './core/**/*.js', 'views/**/*', './client/**/*.js']).on('change', function(file){
         if (file.path.indexOf('/core/') > 0 || file.path.indexOf('.jade') > 0) {
             setTimeout(function(){
                 server.changed(file.path);
@@ -64,5 +64,5 @@ gulp.task('open', function(){
 });
 
 gulp.task('default', function(){
-    gulp.start('css', 'js-frontend', 'js-backend', 'open',   'watch');
+    gulp.start('css', 'js-frontend', 'js-backend', 'open', 'watch');
 });
