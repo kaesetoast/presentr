@@ -28,7 +28,8 @@ module.exports = function(presentation) {
                 action: '/presentations',
                 class: 'icon-menu'
             }
-        ];
+        ],
+        slideContainer = document.getElementById('slide-container');
 
     function init() {
         setBaseElements();
@@ -94,7 +95,13 @@ module.exports = function(presentation) {
 
     exports.open = function() {
         sidebar.classList.add('open');
+        slideContainer.addEventListener('click', offClick);
     };
+
+    function offClick() {
+        exports.close();
+        slideContainer.removeEventListener('click', offClick);
+    }
 
     exports.close = function() {
         sidebar.classList.remove('open');
