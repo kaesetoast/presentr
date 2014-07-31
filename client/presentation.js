@@ -56,7 +56,7 @@ module.exports = function(slideElements, name, isPreviewDeck) {
 
     exports.connect = function() {
         if (typeof socket === 'undefined') {
-            socket = io.connect('http://localhost');
+            socket = io.connect('http://guybrush');
             socket.on('goto-slide', function(data){
                 exports.goTo(data, true);
             });
