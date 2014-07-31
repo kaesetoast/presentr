@@ -19,8 +19,7 @@ module.exports = function(container, endTime) {
         timer.appendChild(toggleButton);
         toggleButton.addEventListener('click', toggleClick);
         resetButton = document.createElement('a');
-        resetButton.innerHTML = 'reset';
-        resetButton.classList.add('reset-button');
+        resetButton.classList.add('reset-button', 'icon', 'icon-reset');
         timer.appendChild(resetButton);
         resetButton.addEventListener('click', resetClick);
         updateTimeBox();

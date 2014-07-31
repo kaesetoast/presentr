@@ -41,22 +41,36 @@
   margin-top: 60px; }
 
 .toolbox {
+  font-family: sans-serif;
+  background-color: rgba(0, 0, 0, 0.8);
+  -webkit-transition: background-color 0.4s ease;
+  transition: background-color 0.4s ease;
+  bottom: 150px;
   -webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
-  width: 500px;
-  height: 300px;
-  background-color: #fff;
-  bottom: 20px;
-  right: 300px;
+  border-radius: 15px;
+  color: #fff;
   cursor: move;
-  font-size: 3em; }
-  .toolbox .time-box {
-    margin: 0.6em; }
-    .toolbox .time-box.lastminute {
-      color: #f00; }
-    .toolbox .time-box.overtime {
-      -webkit-animation: blink 0.9s infinite;
-      animation: blink 0.9s infinite; }
-  .toolbox .toggle-button {
-    margin: 0.6em;
+  font-size: 3em;
+  height: 80px;
+  right: 300px;
+  width: 350px;
+  line-height: 80px; }
+  .toolbox:hover {
+    background-color: rgba(0, 0, 0, 0.9); }
+  .toolbox * {
+    padding: 0 0.15em; }
+  .toolbox .time-box.lastminute {
+    color: #f00; }
+  .toolbox .time-box.overtime {
+    -webkit-animation: blink 0.9s infinite;
+    animation: blink 0.9s infinite; }
+  .toolbox .icon {
     cursor: pointer; }
+    .toolbox .icon:before {
+      padding: 0;
+      top: 4px;
+      -webkit-transition: opacity 0.4s ease;
+      transition: opacity 0.4s ease; }
+    .toolbox .icon:hover:before {
+      opacity: 0.7; }

@@ -28,16 +28,26 @@
 }
 
 .toolbox {
+    font-family: sans-serif;
+    background-color: rgba(0, 0, 0, .8);
+    transition: background-color .4s ease;
+    &:hover {
+        background-color: rgba(0, 0, 0, .9);
+    }
+    bottom: 150px;
     box-shadow: 0 0 6px rgba(0, 0, 0, .5);
-    width: 500px;
-    height: 300px;
-    background-color: #fff;
-    bottom: 20px;
-    right: 300px;
+    border-radius: 15px;
+    color: #fff;
     cursor: move;
     font-size: 3em;
+    height: 80px;
+    right: 300px;
+    width: 350px;
+    line-height: 80px;
+    * {
+        padding: 0 .15em;
+    }
     .time-box {
-        margin: .6em;
         &.lastminute {
             color: #f00;
         }
@@ -45,8 +55,17 @@
             @include animation(blink .9s infinite);
         }
     }
-    .toggle-button {
-        margin: .6em;
+    .icon {
         cursor: pointer;
+        &:before {
+            padding: 0;
+            top: 4px;
+            transition: opacity .4s ease;
+        }
+        &:hover {
+            &:before {
+                opacity: .7;
+            }
+        }
     }
 }

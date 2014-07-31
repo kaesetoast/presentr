@@ -27,34 +27,31 @@
     }
 }
 
+.icon-reset:before {
+    content: '\e601';
+}
 .icon-screen:before {
     content: '\e600';
     top: .1em;
 }
-.icon-equalizer:before {
-    content: '\e601';
-}
 .icon-search:before {
     content: '\e602';
 }
-.icon-checkmark:before {
+.icon-menu:before {
     content: '\e603';
 }
-.icon-close:before {
+.icon-checkmark:before {
     content: '\e604';
 }
-.icon-menu:before {
+.icon-play:before {
     content: '\e605';
 }
-.icon-connected:before {
+.icon-pause:before {
     content: '\e606';
 }
-.icon-disconnected:before {
+.icon-connected:before {
     content: '\e607';
 }
-.icon-play:before {
+.icon-disconnected:before {
     content: '\e608';
-}
-.icon-pause:before {
-    content: '\e609';
 }
