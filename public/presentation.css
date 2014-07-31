@@ -103,6 +103,12 @@
 .icon-disconnected:before {
   content: '\e607'; }
 
+.icon-play:before {
+  content: '\e608'; }
+
+.icon-pause:before {
+  content: '\e609'; }
+
 .sidebar {
   background-color: #181818;
   -webkit-box-shadow: 4px 0 9px rgba(0, 0, 0, 0.4);

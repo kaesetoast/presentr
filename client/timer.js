@@ -15,8 +15,7 @@ module.exports = function(container, endTime) {
         container.appendChild(timer);
         timer.appendChild(timeBox);
         toggleButton = document.createElement('a');
-        toggleButton.innerHTML = '▶';
-        toggleButton.classList.add('toggle-button');
+        toggleButton.classList.add('toggle-button', 'icon', 'icon-play');
         timer.appendChild(toggleButton);
         toggleButton.addEventListener('click', toggleClick);
         resetButton = document.createElement('a');
@@ -64,13 +63,15 @@ module.exports = function(container, endTime) {
 
     exports.start = function() {
         interval = setInterval(tick, 1000);
-        toggleButton.innerHTML = '||';
+        toggleButton.classList.remove('icon-play');
+        toggleButton.classList.add('icon-pause');
     };
 
     exports.pause = function() {
         clearInterval(interval);
         interval = null;
-        toggleButton.innerHTML = '▶';
+        toggleButton.classList.remove('icon-pause');
+        toggleButton.classList.add('icon-play');
     };
 
     exports.reset = function() {
